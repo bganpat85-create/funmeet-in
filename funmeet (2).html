@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FunMeet.in</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background: #000;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* MetaPorn Header */
+    .header {
+      background: #0a0a0a;
+      padding: 10px 15px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #222;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-left { display:flex; align-items:center; gap:15px; }
+    .menu-icon { font-size:28px; cursor:pointer; }
+    .logo { display:flex; align-items:center; gap:8px; font-size:29px; font-weight:700; }
+    .heart { color:#ff2d55; font-size:34px; }
+    .site-name { color:#ffffff; }
+    .header-right { display:flex; align-items:center; gap:18px; font-size:24px; }
+
+    /* Live Bar */
+    .live-bar {
+      background: #1a0000;
+      border-bottom: 1px solid #330000;
+      padding: 10px 0;
+      text-align: center;
+      font-size: 15.5px;
+      font-weight: 600;
+      color: #ff2d55;
+    }
+
+    /* Search Bar */
+    .search-bar {
+      margin: 15px auto 25px;
+      max-width: 640px;
+      padding: 0 15px;
+    }
+    .search-container {
+      background:#1a1a1a;
+      border:1px solid #333;
+      border-radius:50px;
+      display:flex;
+      align-items:center;
+      padding:13px 18px;
+    }
+    .search-container input {
+      background:transparent;
+      border:none;
+      color:#aaa;
+      flex:1;
+      font-size:16.5px;
+      outline:none;
+      padding-left:10px;
+    }
+    .search-container button {
+      background:transparent;
+      border:none;
+      color:#777;
+      font-size:23px;
+      cursor:pointer;
+    }
+
+    .container { max-width:600px; margin:0 auto; padding:0 10px 20px; }
+    .post {
+      margin-bottom:22px;
+      border-radius:12px;
+      overflow:hidden;
+      background:#111;
+      position:relative;
+      cursor:pointer;
+    }
+    .post img {
+      width:100%;
+      height: 210px;
+      object-fit: cover;
+      display:block;
+    }
+
+    .views {
+      position:absolute; top:12px; left:12px;
+      background:rgba(0,0,0,0.85); color:#fff;
+      padding:5px 12px; border-radius:5px;
+      font-size:13.5px; font-weight:700;
+    }
+    .meta-bar {
+      position:absolute; bottom:12px; right:12px;
+      display:flex; gap:6px;
+    }
+    .hd-badge {
+      background:#e50914; color:#fff;
+      padding:5px 11px; border-radius:5px;
+      font-size:13px; font-weight:700;
+    }
+    .duration {
+      background:rgba(0,0,0,0.85); color:#fff;
+      padding:5px 11px; border-radius:5px;
+      font-size:13px; font-weight:600;
+    }
+
+    .post-info { padding:14px 16px; }
+    .caption {
+      font-size:15.2px;
+      line-height:1.45;
+      margin-bottom:10px;
+      color:#ddd;
+    }
+    .stats {
+      display:flex;
+      align-items:center;
+      gap:16px;
+      font-size:13.8px;
+      color:#aaa;
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .page-btn {
+      background: #222;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .page-btn.active {
+      background: #ff2d55;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MetaPorn Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="menu-icon">☰</span>
+      <div class="logo">
+        <span class="heart">❤️</span>
+        <span class="site-name">FunMeet.in</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <span>⚤</span>
+      <span>⚙️</span>
+    </div>
+  </div>
+
+  <!-- Live Bar -->
+  <div class="live-bar" id="liveBar">
+    🔥 2,438 people watching now
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <div class="search-container">
+      <input type="text" placeholder="Search 62,092,986 videos ..." readonly>
+      <button>🔍</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="posts"></div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+
+  <script>
+    const redirectLinks = [
+      "https://cajhgcd.lnkks.com/p/LsDuH",
+      "https://nm52hrm.hotromancenow.com/talpy6r?s1=Domainreel",
+      "https://t.me/+gnft3TSfICY5MDY1"
+    ];
+
+    let currentPage = 1;
+    const postsPerPage = 10;
+
+    function getNextLink() {
+      let count = parseInt(localStorage.getItem('clickCount') || '0');
+      const today = new Date().toISOString().slice(0,10);
+      if (localStorage.getItem('clickDate') !== today) {
+        count = 0;
+        localStorage.setItem('clickDate', today);
+      }
+      const index = count % 3;
+      localStorage.setItem('clickCount', count + 1);
+      return redirectLinks[index];
+    }
+
+    // Live Counter
+    setInterval(() => {
+      const count = Math.floor(Math.random() * 1800) + 1800;
+      document.getElementById('liveBar').innerHTML = `🔥 ${count.toLocaleString()} people watching now`;
+    }, 4000);
+
+    // Your Images
+    const images = [
+      "https://c2.ttcache.com/thumbnail/Wt48t96a8yP/288x162/14_240.jpg",
+      "https://c1.ttcache.com/thumbnail/sQ86hIefHRq/288x162/1.jpg",
+      "https://c3.ttcache.com/thumbnail/oWK3RHFnzUs/288x162/11.jpg",
+      "https://c2.ttcache.com/thumbnail/MLWVXcJO7jp/288x162/2560x1440.224.webp",
+      "https://c4.ttcache.com/thumbnail/mGSEGuMjrLz/288x162/hq.17586877.webp",
+      "https://c3.ttcache.com/thumbnail/hChwUuapKzK/288x162/hq.28.webp",
+      "https://c2.ttcache.com/thumbnail/0gw0z2LPbYz/288x162/2560x1440.203.webp",
+      "https://c1.ttcache.com/thumbnail/FpmLXIWr5aY/288x162/hq.23.webp",
+      "https://c3.ttcache.com/thumbnail/j8ondHvDhhg/288x162/9.jpg",
+      "https://c3.ttcache.com/thumbnail/U1kp7Zh0mhV/288x162/hq.16.webp",
+      "https://c2.ttcache.com/thumbnail/8aHwd2CYlAq/288x162/1-nIC.jpg",
+      "https://c3.ttcache.com/thumbnail/1V2b1VzKf4e/288x162/8.jpg",
+      "https://c2.ttcache.com/thumbnail/S5dujStFmNj/288x162/0_50548800_1765689925_wvAX_20251214052525.jpg",
+      "https://c2.ttcache.com/thumbnail/uB7l6bj8e78/288x162/3.jpg"
+    ];
+
+    const captions = [
+      "Desi slut gets her tight pussy destroyed in hardcore hotel fuck",
+      "Indian bhabhi takes massive creampie deep inside her wet cunt",
+      "Horny college girl moans loudly while getting rough anal fucked",
+      "Busty desi wife rides cock like a whore and squirts hard",
+      "Real homemade video of Indian teen getting gangbanged",
+      "Desi randi sucks and fucks two cocks at once in hotel",
+      "Indian girl gets her asshole stretched in painful anal session",
+      "Secret leaked video of married Indian woman cheating",
+      "Hot desi babe gets face fucked and covered in cum",
+      "Curvy Indian MILF begs for deep creampie in missionary"
+    ];
+
+    const container = document.getElementById('posts');
+    const paginationContainer = document.getElementById('pagination');
+
+    function renderPosts(page) {
+      container.innerHTML = '';
+      const start = (page - 1) * postsPerPage;
+      const end = start + postsPerPage;
+
+      for (let i = start; i < end && i < images.length * 3; i++) {
+        const caption = captions[i % captions.length];
+        const views = ["920K","1.2M","654K","2.1M","780K","1.85M","3.4M","456K"][i % 8];
+        const like = ["89%","94%","82%","91%","88%","97%","93%","95%"][i % 8];
+        const timeAgo = ["11 hours ago","2 days ago","5 hours ago","14 hours ago","1 day ago","3 days ago","8 hours ago"][i % 7];
+        const duration = ["2:45","3:12","1:58","4:30","2:20","5:05","3:40","2:55"][i % 8];
+        const imgSrc = images[i % images.length];
+
+        const post = document.createElement('div');
+        post.className = 'post';
+        post.innerHTML = `
+          <img src="${imgSrc}" alt="Post">
+          <div class="views">${views}</div>
+          <div class="meta-bar">
+            <span class="hd-badge">HD</span>
+            <span class="duration">${duration}</span>
+          </div>
+          <div class="post-info">
+            <div class="caption">${caption}</div>
+            <div class="stats">
+              <span>👍 ${like}</span>
+              <span>🕒 ${timeAgo}</span>
+            </div>
+          </div>
+        `;
+
+        // Strong Click Handler
+        post.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.open(getNextLink(), '_blank');
+        });
+
+        container.appendChild(post);
+      }
+    }
+
+    function renderPagination(totalPosts) {
+      paginationContainer.innerHTML = '';
+      const totalPages = Math.ceil(totalPosts / postsPerPage);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+        btn.textContent = i;
+        btn.addEventListener('click', () => {
+          currentPage = i;
+          renderPosts(currentPage);
+          renderPagination(images.length * 3);
+        });
+        paginationContainer.appendChild(btn);
+      }
+    }
+
+    // Initial Render
+    renderPosts(1);
+    renderPagination(images.length * 3);
+  </script>
+</body>
+</html>
