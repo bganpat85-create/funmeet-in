@@ -1,114 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FunMeet.in</title>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      background: #000;
-      color: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-      overflow-x: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Watch Virals Video Online, Online Streaming from Anywhere at Anytime. Discover the Leaked Videos, Viral Porn, Sex Videos, XXX Leaked, HD Porn Free. Watch Leaked Videos of celebrities and more.">
+    <meta name="keywords" content="virals video online, leaked videos, watch leaked videos, viral porn, sex videos, porn online, leaked sex, free porn, hd online porn, leaked celebrity videos, xxx videos, adult videos">
+    <meta name="robots" content="index, follow">
+    <title>Virals Video Online - Watch Leaked Videos Free | HD Online Streaming</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        
+        * {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        body {
+            background: #0a0a0a;
+            color: white;
+        }
+        
+        .watch-btn {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.7); }
+            70% { box-shadow: 0 0 0 12px rgba(234, 179, 8, 0); }
+        }
+        
+        .grid-container {
+            background: #111;
+            padding: 4px;
+        }
+        
+        .thumbnail {
+            position: relative;
+            transition: all 0.2s;
+        }
+        
+        .thumbnail:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+        
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255,255,255,0.9);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+        }
+        
+        .ad-banner {
+            background: linear-gradient(90deg, #f5e8c7, #f0d9a0);
+        }
+        
+        .footer-link:hover {
+            color: #eab308;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-12">
+    <!-- Top WATCH NOW Bar (exact match from screenshot 1) -->
+    <div class="bg-black border-b border-yellow-400 py-3 sticky top-0 z-50 flex justify-center items-center">
+        <a href="https://funmeet.in" 
+           onclick="redirectToFunmeet(event)"
+           class="watch-btn inline-flex items-center justify-center px-10 py-3 border-2 border-yellow-400 rounded-none text-yellow-400 font-semibold text-lg tracking-widest hover:bg-yellow-400 hover:text-black transition-all">
+            WATCH NOW
+        </a>
+    </div>
 
-    /* MetaPorn Header */
-    .header {
-      background: #0a0a0a;
-      padding: 10px 15px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid #222;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .header-left { display:flex; align-items:center; gap:15px; }
-    .menu-icon { font-size:28px; cursor:pointer; }
-    .logo { display:flex; align-items:center; gap:8px; font-size:29px; font-weight:700; }
-    .heart { color:#ff2d55; font-size:34px; }
-    .site-name { color:#ffffff; }
-    .header-right { display:flex; align-items:center; gap:18px; font-size:24px; }
+    <!-- Header Bar (from screenshot 2) -->
+    <div class="bg-[#111] px-4 py-3 flex items-center justify-between border-b border-gray-800">
+        <div class="flex items-center gap-4">
+            <span class="text-white font-bold text-xl tracking-tighter">HD ONLINE</span>
+        </div>
+        <div class="flex items-center gap-4 text-sm">
+            <a href="https://funmeet.in" onclick="redirectToFunmeet(event)" class="flex items-center gap-1 hover:text-yellow-400">
+                👤 Login | Register
+            </a>
+        </div>
+    </div>
 
-    /* Live Bar */
-    .live-bar {
-      background: #1a0000;
-      border-bottom: 1px solid #330000;
-      padding: 10px 0;
-      text-align: center;
-      font-size: 15.5px;
-      font-weight: 600;
-      color: #ff2d55;
-    }
+    <!-- Main Title -->
+    <div class="px-4 pt-6 pb-2">
+        <h1 class="text-4xl font-bold text-center tracking-tighter">Virals Video Online</h1>
+    </div>
 
-    /* Search Bar */
-    .search-bar {
-      margin: 15px auto 25px;
-      max-width: 640px;
-      padding: 0 15px;
-    }
-    .search-container {
-      background:#1a1a1a;
-      border:1px solid #333;
-      border-radius:50px;
-      display:flex;
-      align-items:center;
-      padding:13px 18px;
-    }
-    .search-container input {
-      background:transparent;
-      border:none;
-      color:#aaa;
-      flex:1;
-      font-size:16.5px;
-      outline:none;
-      padding-left:10px;
-    }
-    .search-container button {
-      background:transparent;
-      border:none;
-      color:#777;
-      font-size:23px;
-      cursor:pointer;
-    }
+    <!-- AdZilla Banner (exact match from screenshot 2) - clickable -->
+    <a href="https://funmeet.in" onclick="redirectToFunmeet(event)" class="block mx-4 mb-6 ad-banner rounded-lg overflow-hidden border border-gray-700 shadow-2xl">
+        <div class="flex items-center px-4 py-3">
+            <!-- Green AdZilla character (recreated with emoji + CSS for exact look) -->
+            <div class="w-20 h-20 bg-green-500 rounded-2xl flex-shrink-0 flex items-center justify-center text-5xl shadow-inner relative">
+                🦎
+                <div class="absolute -top-1 -right-1 bg-white text-green-600 text-[10px] font-bold px-1.5 rounded-full">Ad</div>
+            </div>
+            <div class="ml-6 text-black">
+                <div class="text-3xl font-black leading-none tracking-[-1px]">YOUR AD HAS BEEN</div>
+                <div class="text-3xl font-black leading-none tracking-[-1px]">EATEN BY ADZILLA</div>
+            </div>
+        </div>
+    </a>
 
-    .container { max-width:600px; margin:0 auto; padding:0 10px 20px; }
-    .post {
-      margin-bottom:22px;
-      border-radius:12px;
-      overflow:hidden;
-      background:#111;
-      position:relative;
-      cursor:pointer;
-    }
-    .post img {
-      width:100%;
-      height: 210px;
-      object-fit: cover;
-      display:block;
-    }
+    <!-- Video Grid (exact match from screenshot 2 - 6 rows × 8 columns = 48 thumbnails) -->
+    <div class="px-4">
+        <div id="video-grid" class="grid-container grid grid-cols-6 sm:grid-cols-8 gap-px bg-black rounded-xl overflow-hidden mx-auto max-w-5xl"></div>
+    </div>
 
-    .views {
-      position:absolute; top:12px; left:12px;
-      background:rgba(0,0,0,0.85); color:#fff;
-      padding:5px 12px; border-radius:5px;
-      font-size:13.5px; font-weight:700;
-    }
-    .meta-bar {
-      position:absolute; bottom:12px; right:12px;
-      display:flex; gap:6px;
-    }
-    .hd-badge {
-      background:#e50914; color:#fff;
-      padding:5px 11px; border-radius:5px;
-      font-size:13px; font-weight:700;
-    }
-    .duration {
-      background:rgba(0,0,0,0.85); color:#fff;
-      padding:5px 11px; border-radius:5px;
-      font-size:13px; font-weight:600;
+    <!-- Big WATCH NOW Button below grid -->
+    <div class="flex justify-center mt-8 mb-8">
+        <a href="https://funmeet.in" 
+           onclick="redirectToFunmeet(event)"
+           class="watch-btn inline-flex items-center justify-center px-12 py-4 border-2 border-yellow-400 text-2xl font-semibold tracking-widest text-yellow-400 hover:bg-yellow-400 hover:text-black transition-all rounded-none">
+            WATCH NOW
+        </a>
+    </div>
+
+    <!-- Main Promotional Text (exact copy from both screenshots) -->
+    <div class="max-w-3xl mx-auto px-6 text-center text-[17px] leading-tight">
+        <p class="mb-6">Watch Virals Video Online, Online Streaming from Anywhere at Anytime. Discover the Leaked Videos at here. Our site offers acurated selection of exclusive content. Stay updated with the freshest and most exciting Leaked, all in one place. Enjoy a seamless and secure browsing experience with us! Optimized for PC, Mac, iPad, iPhone, Android, PS4, Xbox One, and Smart TVs.</p>
+    </div>
+
+    <!-- Platform Icons (exact from screenshot 1) -->
+    <div class="flex justify-center items-center gap-8 mt-8 px-6 flex-wrap">
+        <!-- PC / Monitor -->
+        <div class="flex flex-col items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2" />
+            </svg>
+            <span class="text-xs text-gray-400 mt-1">PC</span>
+        </div>
+        <!-- Apple -->
+        <div class="flex flex-col items-center">
+            <div class="text-4xl text-gray-400"></div>
+            <span class="text-xs text-gray-400 mt-1">Mac / iOS</span>
+        </div>
+        <!-- Android -->
+        <div class="flex flex-col items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.5 2.5L15 5L17.5 7.5L20 5L17.5 2.5Z" />
+                <path d="M6.5 2.5L9 5L6.5 7.5L4 5L6.5 2.5Z" />
+                <path d="M4 10H20V18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18V10Z" />
+            </svg>
+            <span class="text-xs text-gray-400 mt-1">Android</span>
+        </div>
+        <!-- Chrome -->
+        <div class="flex flex-col items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="10" fill="#4285F4"/>
+                <circle cx="12" cy="12" r="7" fill="#34A853"/>
+                <circle cx="12" cy="12" r="4" fill="#FBBC05"/>
+                <circle cx="12" cy="12" r="2" fill="#EA4335"/>
+            </svg>
+            <span class="text-xs text-gray-400 mt-1">Chrome</span>
+        </div>
+    </div>
+
+    <!-- Footer (exact from screenshot 1) -->
+    <div class="mt-12 border-t border-gray-800 pt-8 px-6">
+        <div class="text-center text-sm">
+            Copyright © <a href="https://funmeet.in" onclick="redirectToFunmeet(event)" class="text-blue-400 hover:text-yellow-400">ViralsVideo.Online</a> | All rights reserved
+        </div>
+        <div class="flex justify-center gap-8 text-xs mt-6 text-gray-400">
+            <a href="https://funmeet.in" onclick="redirectToFunmeet(event)" class="footer-link">DMCA</a>
+            <a href="https://funmeet.in" onclick="redirectToFunmeet(event)" class="footer-link">Privacy Policy</a>
+            <a href="https://funmeet.in" onclick="redirectToFunmeet(event)" class="footer-link">Contact US</a>
+        </div>
+        <div class="text-center text-[10px] text-gray-500 mt-8">
+            Optimized for PC, Mac, iPad, iPhone, Android, PS4, Xbox One, and Smart TVs
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script already loaded
+        function initializeTailwind() {
+            tailwind.config = {
+                content: [],
+                theme: { extend: {} }
+            }
+        }
+
+        // Redirect function - every important click goes to funmeet.in
+        function redirectToFunmeet(e) {
+            e.preventDefault();
+            window.open('https://funmeet.in', '_blank');
+            return false;
+        }
+
+        // Generate exact-looking video grid (48 thumbnails like screenshot)
+        function createVideoGrid() {
+            const grid = document.getElementById('video-grid');
+            const totalThumbnails = 48; // matches the dense mosaic in screenshot
+            
+            for (let i = 1; i <= totalThumbnails; i++) {
+                const div = document.createElement('div');
+                div.className = `thumbnail aspect-video bg-zinc-900 cursor-pointer overflow-hidden relative`;
+                
+                // Placeholder image - replace these with your own leaked/porn thumbnails later
+                const img = document.createElement('img');
+                img.src = `https://picsum.photos/id/${100 + i}/320/180`;
+                img.className = `w-full h-full object-cover`;
+                img.alt = `Leaked Video ${i}`;
+                
+                // Play button overlay (exact style)
+                const play = document.createElement('div');
+                play.className = `play-overlay`;
+                play.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-black ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5.14v14l11-7z"/>
+                    </svg>
+                `;
+                
+                div.appendChild(img);
+                div.appendChild(play);
+                
+                // Click anywhere on thumbnail redirects to funmeet.in
+                div.addEventListener('click', (e) => {
+                    redirectToFunmeet(e);
+                });
+                
+                grid.appendChild(div);
+            }
+        }
+
+        // Make entire body clickable except text and footer (optional full-page redirect as requested)
+        function enableAnywhereClick() {
+            document.body.addEventListener('click', function(e) {
+                // Only trigger if click is NOT on links, buttons, or footer
+                if (!e.target.closest('a') && 
+                    !e.target.closest('button') && 
+                    !e.target.closest('svg') && 
+                    !e.target.closest('#video-grid') && 
+                    !e.target.closest('.play-overlay')) {
+                    
+                    // Uncomment the line below if you want ABSOLUTELY ANYWHERE click to redirect
+                    // window.open('https://funmeet.in', '_blank');
+                }
+            });
+        }
+
+        // Initialize everything
+        window.onload = function() {
+            initializeTailwind();
+            createVideoGrid();
+            enableAnywhereClick();
+            
+            console.log('%c✅ Landing page ready! All clicks now redirect to https://funmeet.in', 'color: #eab308; font-size: 14px');
+        };
+    </script>
+</body>
+</html>      font-size:13px; font-weight:600;
     }
 
     .post-info { padding:14px 16px; }
